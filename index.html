@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="NetScan - AI-Assisted Network Diagnostics and Root-Cause Analysis Dashboard">
+<title>NetScan – Network Diagnostics & RCA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<aside class="sidebar" id="sidebar">
+  <div class="brand">
+    <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+    </svg>
+    <span>NetScan<small class="brand-sub">RCA-X</small></span>
+
+  </div>
+  <nav aria-label="Main navigation">
+    <a href="#dashboard" data-view="dashboard" class="active">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+      Dashboard
+    </a>
+    <a href="#diagnostics" data-view="diagnostics">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+      Network Diagnostics
+    </a>
+    <a href="#rca" data-view="rca">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+      Root-Cause Analysis
+    </a>
+    <a href="#history" data-view="history">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      Incident History
+    </a>
+    <a href="#reports" data-view="reports">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+      Reports
+    </a>
+    <a href="#settings" data-view="settings">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+      Settings
+    </a>
+  </nav>
+  <div class="sidebar-footer">
+    <div class="phase-badge">Phase 1 · Interactive Prototype</div>
+  </div>
+</aside>
+
+<div class="main">
+  <header class="topbar">
+    <button id="menuBtn" class="menu-btn" aria-label="Toggle navigation menu">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </button>
+    <h1 id="viewTitle">Dashboard</h1>
+    <div class="topbar-status">
+      <span class="status-indicator live" id="apiStatusDot"></span>
+      <span class="status-text" id="apiStatusBadge">Connecting API...</span>
+    </div>
+  </header>
+  <div class="notice" role="note">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+    <span id="noticeBannerText"><strong>Phase 3 Mode:</strong> Checking backend FastAPI server status (http://127.0.0.1:8000)...</span>
+  </div>
+
+  <main>
+    <section class="view" id="view-dashboard">
+      <div class="cards" id="cards"></div>
+      <div class="grid2">
+        <div class="panel" data-mount="diag"></div>
+        <div class="panel" data-mount="rca"></div>
+      </div>
+      <div class="panel">
+        <div class="panel-header">
+          <h2>Recent diagnostic activity</h2>
+          <a href="#history" class="btn-link">View all incidents &rarr;</a>
+        </div>
+        <div class="table-wrap"><table data-mount="sessions" data-limit="5"></table></div>
+      </div>
+    </section>
+
+    <section class="view" id="view-diagnostics" hidden>
+      <div class="panel" data-mount="diag"></div>
+    </section>
+
+    <section class="view" id="view-rca" hidden>
+      <div class="panel" data-mount="rca" data-picker="1"></div>
+    </section>
+
+    <section class="view" id="view-history" hidden>
+      <div class="panel">
+        <div class="panel-header flex-between">
+          <h2>Incident history</h2>
+          <div class="history-controls">
+            <input type="text" id="historySearch" placeholder="Search target or ID..." class="input-sm">
+            <select id="historyFilter" class="select-sm">
+              <option value="all">All Statuses</option>
+              <option value="Passed">Passed</option>
+              <option value="Warning">Warning</option>
+              <option value="Failed">Failed</option>
+            </select>
+          </div>
+        </div>
+        <div class="table-wrap"><table data-mount="sessions" id="fullHistoryTable"></table></div>
+      </div>
+    </section>
+
+    <section class="view" id="view-reports" hidden>
+      <div class="panel">
+        <div class="panel-header">
+          <h2>Diagnostic Incident Reports & Verification</h2>
+        </div>
+        <p style="color: var(--text-dim); margin-bottom: 20px;">Generate audit-ready Markdown/HTML reports or re-test target connectivity to verify post-remediation clearance.</p>
+        
+        <div class="form-row" style="display: flex; gap: 12px; align-items: center; margin-bottom: 20px; flex-wrap: wrap;">
+          <input type="text" id="reportTargetInput" placeholder="Target domain or IP (e.g. google.com)" class="input-sm" style="flex: 1; min-width: 200px;">
+          <select id="reportFormatSelect" class="select-sm" style="width: 140px;">
+            <option value="markdown">Markdown (.md)</option>
+            <option value="html">HTML (.html)</option>
+          </select>
+          <button id="exportReportBtn" class="btn btn-primary" style="padding: 8px 16px;">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 4px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            Export Report
+          </button>
+          <button id="verifyResolutionBtn" class="btn" style="background: #2b6cb0; color: white; padding: 8px 16px;">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 4px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Verify Resolution
+          </button>
+        </div>
+
+        <div id="verificationContainer" style="display: none; margin-bottom: 25px; padding: 15px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg-surface-elevated);"></div>
+
+        <div class="panel-header" style="margin-top: 20px;">
+          <h3>Report Preview / Output</h3>
+        </div>
+        <textarea id="reportOutputArea" readonly placeholder="Report content will appear here upon export..." style="width: 100%; height: 320px; background: #0f131a; color: #48bb78; font-family: 'JetBrains Mono', monospace; font-size: 13px; padding: 15px; border: 1px solid var(--border); border-radius: 6px; resize: vertical;"></textarea>
+      </div>
+    </section>
+
+
+    <section class="view" id="view-settings" hidden>
+      <div class="panel">
+        <div class="panel-header">
+          <h2>System Settings & SLA Thresholds</h2>
+        </div>
+        <p style="color: var(--muted); margin-bottom: 25px;">Configure probe packet parameters, alert thresholds, and default targets for NetRCA-X.</p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px;">
+          <!-- Left Column: Probe Parameters -->
+          <div style="background: var(--bg-input); padding: 20px; border-radius: 6px; border: 1px solid var(--line-red);">
+            <h3 style="color: #ffffff; margin-bottom: 15px; font-size: 0.95rem;">Diagnostic Probe Parameters</h3>
+            
+            <div style="margin-bottom: 15px;">
+              <label style="display: block; font-size: 0.82rem; color: var(--muted); margin-bottom: 5px;">Default Target Host / IP</label>
+              <input type="text" id="settingDefaultTarget" value="google.com" class="input-sm" style="width: 100%;">
+            </div>
+
+            <div style="margin-bottom: 15px;">
+              <label style="display: block; font-size: 0.82rem; color: var(--muted); margin-bottom: 5px;">ICMP Probe Packet Count</label>
+              <input type="number" id="settingPacketCount" min="1" max="10" value="4" class="input-sm" style="width: 100%;">
+            </div>
+
+            <div style="margin-bottom: 15px;">
+              <label style="display: block; font-size: 0.82rem; color: var(--muted); margin-bottom: 5px;">Probe Timeout (seconds)</label>
+              <input type="number" id="settingTimeout" min="0.5" max="15" step="0.5" value="3.0" class="input-sm" style="width: 100%;">
+            </div>
+
+            <div>
+              <label style="display: block; font-size: 0.82rem; color: var(--muted); margin-bottom: 5px;">Default Service Port</label>
+              <input type="number" id="settingDefaultPort" min="1" max="65535" value="443" class="input-sm" style="width: 100%;">
+            </div>
+          </div>
+
+          <!-- Right Column: Alert Thresholds -->
+          <div style="background: var(--bg-input); padding: 20px; border-radius: 6px; border: 1px solid var(--line-red);">
+            <h3 style="color: #ffffff; margin-bottom: 15px; font-size: 0.95rem;">Alert & SLA Thresholds</h3>
+
+            <div style="margin-bottom: 15px;">
+              <label style="display: block; font-size: 0.82rem; color: var(--muted); margin-bottom: 5px;">Latency Warning Threshold (ms)</label>
+              <input type="number" id="settingLatencyWarn" value="100" class="input-sm" style="width: 100%;">
+            </div>
+
+            <div style="margin-bottom: 15px;">
+              <label style="display: block; font-size: 0.82rem; color: var(--muted); margin-bottom: 5px;">Latency Critical Threshold (ms)</label>
+              <input type="number" id="settingLatencyCrit" value="250" class="input-sm" style="width: 100%;">
+            </div>
+
+            <div>
+              <label style="display: block; font-size: 0.82rem; color: var(--muted); margin-bottom: 5px;">RCA Confidence Score Alert Level (%)</label>
+              <input type="number" id="settingConfidenceThresh" min="50" max="100" value="80" class="input-sm" style="width: 100%;">
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <button id="saveSettingsBtn" class="btn btn-primary" style="padding: 9px 20px;">Save System Settings</button>
+          <button id="resetSettingsBtn" class="btn" style="background: #334155; color: white; padding: 9px 20px;">Reset Defaults</button>
+        </div>
+
+        <div id="settingsFeedback" style="display: none; margin-top: 18px; padding: 12px; border-radius: 6px; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--ok); color: #6ee7b7; font-size: 0.85rem;"></div>
+      </div>
+    </section>
+
+  </main>
+</div>
+<script src="./data.js"></script>
+<script src="./app.js"></script>
+</body>
+</html>
