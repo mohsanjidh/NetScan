@@ -10,13 +10,13 @@
 
 ## 🌟 Executive Summary
 
-**NetRCA-X** is an enterprise-grade, AI-assisted network troubleshooting engine and explainable root-cause analysis (RCA) system. Designed to transform complex network diagnostics into structured, actionable root-cause insights, NetRCA-X combines real multi-point network probes (`Gateway -> DNS -> Target Port`), a rule-based correlation engine, a Scikit-Learn Random Forest fault classifier, tree feature importance explainability, persistent SQLite session logging, and executive report exporting.
+**NetScan** is an enterprise-grade, AI-assisted network troubleshooting engine and explainable root-cause analysis (RCA) system. Designed to transform complex network diagnostics into structured, actionable root-cause insights, NetRCA-X combines real multi-point network probes (`Gateway -> DNS -> Target Port`), a rule-based correlation engine, a Scikit-Learn Random Forest fault classifier, tree feature importance explainability, persistent SQLite session logging, and executive report exporting.
 
 ---
 
 ## 📐 Architecture & Software Design Patterns
 
-NetRCA-X adheres to clean software engineering principles (SOLID, DRY) and fundamental Object-Oriented Programming (OOP) design patterns:
+NetScan adheres to clean software engineering principles (SOLID, DRY) and fundamental Object-Oriented Programming (OOP) design patterns:
 
 ```mermaid
 flowchart TD
