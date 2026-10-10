@@ -1,4 +1,4 @@
-# NetRCA-X: AI-Assisted Network Troubleshooting and Explainable Root-Cause Analysis System
+# NetScan: AI-Assisted Network Troubleshooting and Explainable Root-Cause Analysis System
 
 [![FastAPI](https://img.shields.io/badge/FastAPI-v2.0.0-009688.svg)](https://fastapi.tiangolo.com)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB.svg)](https://www.python.org/)
